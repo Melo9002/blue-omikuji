@@ -21,12 +21,42 @@ button {
 }
 
 .card {
-  margin-top: 1rem;
-  background: white;
-  padding: 1.5rem 2rem;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  max-width: 420px;
+  background: #f9f7f3;
+  padding: 2rem 1.5rem;
+  border: 1px solid #ddd;
+  line-height: 1.6;
+}
+
+.domain {
+  margin-top: 1.4rem;
+}
+
+.domain-header {
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.domain-header .jp {
+  font-weight: 600;
+}
+
+.domain-header .en {
+  font-style: italic;
+}
+
+.domain-header .desc {
+  margin-left: 0.25rem;
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.fortune-line {
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
 }
 
 .jp {
