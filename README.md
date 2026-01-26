@@ -1,6 +1,6 @@
 # ⛩️ Blue’s Virtual Omikuji Shrine
 
-A small React app inspired by real Japanese **omikuji** — the fortune-drawing ritual often found at shrines and temples.
+A small React app inspired by real Japanese **omikuji** (the fortune-drawing ritual often found at shrines and temples).
 
 This is a **personal project**, built as a way to learn, reflect, and play with the idea of ritual in a digital space.
 
