@@ -9,13 +9,38 @@ export type FortuneLevel =
   | "daikyo";    // 大凶
 
 export const fortuneLevels = {
-  daikichi: { jp: "大吉", en: "Great Blessing" },
-  chukichi: { jp: "中吉", en: "Middle Blessing" },
-  shokichi: { jp: "小吉", en: "Small Blessing" },
-  suekichi: { jp: "末吉", en: "Future Blessing" },
-  kyo: { jp: "凶", en: "Misfortune" },
-  daikyo: { jp: "大凶", en: "Great Misfortune" },
+  daikichi: {
+    jp: "大吉",
+    romaji: "Dai-kichi",
+    en: "Great Blessing",
+  },
+  chukichi: {
+    jp: "中吉",
+    romaji: "Chū-kichi",
+    en: "Middle Blessing",
+  },
+  shokichi: {
+    jp: "小吉",
+    romaji: "Shō-kichi",
+    en: "Small Blessing",
+  },
+  suekichi: {
+    jp: "末吉",
+    romaji: "Sue-kichi",
+    en: "Future Blessing",
+  },
+  kyo: {
+    jp: "凶",
+    romaji: "Kyō",
+    en: "Misfortune",
+  },
+  daikyo: {
+    jp: "大凶",
+    romaji: "Dai-kyō",
+    en: "Great Misfortune",
+  },
 } as const;
+
 
 // --- Weighted Distribution (realistic) ---
 

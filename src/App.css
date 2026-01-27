@@ -1,43 +1,82 @@
+/* ===== Page setup ===== */
+
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #faf7f2;
-  color: #222;
+  background: radial-gradient(circle at top, #2a2a2a, #141414);
+  color: #eee;
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
-.container {
+/* Center everything */
+main.container {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.2rem;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
 }
+/* ===== Buttons ===== */
 
 button {
   padding: 0.6rem 1.4rem;
   font-size: 1rem;
   cursor: pointer;
+  border-radius: 6px;
+  border: none;
 }
+
+/* ===== Omikuji Card ===== */
 
 .card {
-  max-width: 420px;
+  width: 100%;
+  max-width: 360px;
   background: #f9f7f3;
-  padding: 2rem 1.5rem;
-  border: 1px solid #ddd;
+  color: #222;
+  padding: 1.5rem 1.25rem;
+  border-radius: 4px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
   line-height: 1.6;
+  display: flex;
+  flex-direction: column;
 }
 
+
+/* ===== Fortune Title ===== */
+
+.card h1 {
+  text-align: center;
+  font-size: 1.4rem;
+  margin: 0;
+  letter-spacing: 0.15em;
+}
+
+.card h2 {
+  text-align: center;
+  font-size: 2.4rem;
+  margin: 0.6rem 0 0.9rem;
+}
+
+/* ===== Fortune Subtitle ===== */
+.fortune-subtitle {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: -0.4rem;
+  margin-bottom: 0.8rem;
+}
+
+
+/* ===== Domain Sections ===== */
+
 .domain {
-  margin-top: 1.4rem;
+  margin-top: 0.6rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid #ddd;
 }
 
 .domain-header {
-  display: flex;
-  gap: 0.5rem;
-  align-items: baseline;
-  font-size: 0.9rem;
-  color: #444;
+  font-size: 0.72rem;
+  line-height: 1.15;
+  margin-bottom: 0.1rem;
 }
 
 .domain-header .jp {
@@ -46,20 +85,45 @@ button {
 
 .domain-header .en {
   font-style: italic;
+  font-size: 0.7rem;
+  color: #666;
 }
 
 .domain-header .desc {
-  margin-left: 0.25rem;
-  font-size: 0.8rem;
-  color: #777;
+  font-size: 0.75rem;
+  color: #888;
 }
+
+/* ===== Fortune Text ===== */
 
 .fortune-line {
   margin-top: 0.4rem;
   font-size: 0.95rem;
 }
 
-.jp {
-  font-size: 2.2rem;
-  margin-bottom: 0.3rem;
+/* ===== Footer buttons ===== */
+
+.ritual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.actions {
+  margin-top: 1rem;
+}
+
+
+@media (max-width: 420px) {
+  .card {
+    padding: 1.25rem 1rem;
+  }
+
+  .card h2 {
+    font-size: 2rem;
+  }
+
+  .fortune-line {
+    font-size: 0.9rem;
+  }
 }

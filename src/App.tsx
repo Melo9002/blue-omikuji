@@ -7,13 +7,26 @@ import {
   type GeneratedFortune,
 } from "./data/fortunes";
 
-
+/**
+ * RitualState represents the "ceremony phase"
+ * - idle: before drawing
+ * - drawing: anticipation delay
+ * - revealed: fortune shown
+ */
 type RitualState = "idle" | "drawing" | "revealed";
 
 function App() {
   const [state, setState] = useState<RitualState>("idle");
   const [result, setResult] = useState<GeneratedFortune | null>(null);
 
+  const levelMeta = result ? fortuneLevels[result.level] : null;
+
+  /**
+   * Starts the ritual:
+   * 1. Enter drawing state
+   * 2. Wait a bit (ceremony)
+   * 3. Generate and reveal fortune
+   */
   function startDraw() {
     setState("drawing");
 
@@ -26,39 +39,62 @@ function App() {
 
   return (
     <main className="container">
-      <h1>御神籤</h1>
+      {/* 
+        The container MUST have exactly ONE child to center.
+        Everything lives inside the card.
+      */}
+      <div className="card">
+        {/* Title always visible */}
+        <h1>御神籤</h1>
 
-      {state === "idle" && (
-        <button onClick={startDraw}>Draw your fortune</button>
-      )}
+        {/* Idle state */}
+        {state === "idle" && (
+          <button onClick={startDraw}>Draw your fortune</button>
+        )}
 
-      {state === "drawing" && <p>Drawing your fortune…</p>}
+        {/* Drawing / anticipation */}
+        {state === "drawing" && <p>Drawing your fortune…</p>}
 
-      {state === "revealed" && result && (
-        <div className="card">
-          <h2>{fortuneLevels[result.level].jp}</h2>
+        {/* Revealed fortune */}
+        {state === "revealed" && result && levelMeta && (
+          <>
+            <h2>{levelMeta.jp}</h2>
+            
+            <p className="fortune-subtitle">
+              {levelMeta.romaji} — {levelMeta.en}
+            </p>
 
-          {Object.entries(result.domains).map(
-            ([key, text]: [string, string]) => {
-              const meta = domains[key as keyof typeof domains];
+            {Object.entries(result.domains).map(
+              ([key, text]: [string, string]) => {
+                const meta = domains[key as keyof typeof domains];
 
-              return (
-                <section key={key} className="domain">
-                  <div className="domain-header">
-                    <span className="jp">{meta.jp}</span>
-                    <span className="en">
-                      {meta.en}
-                      <span className="desc">({meta.description})</span>
-                    </span>
-                  </div>
-                  <p className="fortune-line">{text}</p>
-                </section>
-             );
-            }
-          )}
+                return (
+                  <section key={key} className="domain">
+                    <div className="domain-header">
+                      <span className="jp">{meta.jp}</span>{" "}
+                      <span className="en">
+                        {meta.en}
+                        <span className="desc">
+                          {" "}
+                          ({meta.description})
+                        </span>
+                      </span>
+                    </div>
 
-
-          <button onClick={() => setState("idle")}>Draw again</button>
+                    <p className="fortune-line">{text}</p>
+                  </section>
+                );
+              }
+            )}
+          </>
+        )}
+      </div>
+      {/* Actions live OUTSIDE the card */}
+      {state === "revealed" && (
+        <div className="actions">
+         <button onClick={() => setState("idle")}>
+            Draw again
+         </button>
         </div>
       )}
     </main>
