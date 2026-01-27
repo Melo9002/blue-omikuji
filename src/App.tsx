@@ -69,17 +69,14 @@ function App() {
                 const meta = domains[key as keyof typeof domains];
 
                 return (
-                  <section key={key} className="domain">
-                    <div className="domain-header">
+                  <section className="domain">
+                    <p className="domain-header">
                       <span className="jp">{meta.jp}</span>{" "}
                       <span className="en">
                         {meta.en}
-                        <span className="desc">
-                          {" "}
-                          ({meta.description})
-                        </span>
+                        <span className="desc">{" "}({meta.description})</span>
                       </span>
-                    </div>
+                    </p>
 
                     <p className="fortune-line">{text}</p>
                   </section>

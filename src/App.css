@@ -76,7 +76,7 @@ button {
 .domain-header {
   font-size: 0.72rem;
   line-height: 1.15;
-  margin-bottom: 0.1rem;
+  margin: 0;
 }
 
 .domain-header .jp {
@@ -97,7 +97,7 @@ button {
 /* ===== Fortune Text ===== */
 
 .fortune-line {
-  margin-top: 0.4rem;
+  margin: 0.4rem 0 0;
   font-size: 0.95rem;
 }
 
