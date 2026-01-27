@@ -49,7 +49,7 @@ function App() {
 
         {/* Idle state */}
         {state === "idle" && (
-          <button onClick={startDraw}>Draw your fortune</button>
+          <button onClick={startDraw}>Draw your fortune ✨</button>
         )}
 
         {/* Drawing / anticipation */}
