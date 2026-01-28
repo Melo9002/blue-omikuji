@@ -111,6 +111,9 @@ button {
 
 .actions {
   margin-top: 1rem;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
 }
 
 .tied-message {
