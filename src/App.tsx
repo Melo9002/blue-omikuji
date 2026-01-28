@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { domains } from "./data/fortunes";
+import { toPng } from "html-to-image";
 import {
   drawFortune,
   generateFortune,
@@ -18,6 +19,7 @@ type RitualState = "idle" | "drawing" | "revealed" | "tied";
 function App() {
   const [state, setState] = useState<RitualState>("idle");
   const [result, setResult] = useState<GeneratedFortune | null>(null);
+  const cardRef = useRef<HTMLDivElement | null>(null);
 
   const levelMeta = result ? fortuneLevels[result.level] : null;
 
@@ -41,10 +43,28 @@ function App() {
     setState("tied");
   }
 
+  async function downloadOmikuji() {
+  if (!cardRef.current) return;
+
+  try {
+    const dataUrl = await toPng(cardRef.current, {
+      pixelRatio: 2,
+      backgroundColor: "#f9f7f3",
+    });
+
+    const link = document.createElement("a");
+    link.download = "ao-no-kamidana-omikuji.png";
+    link.href = dataUrl;
+    link.click();
+  } catch (err) {
+    console.error("Failed to export omikuji", err);
+  }
+}
+
   return (
     <main className="container">
       <div className="ritual">
-        <div className="card">
+        <div className="card" ref={cardRef}>
           {/* Title always visible */}
           <h1>御神籤</h1>
 
@@ -92,11 +112,10 @@ function App() {
         {state === "revealed" && (
           <div className="actions">
             <button onClick={() => setState("idle")}>Draw again</button>
-
             <button onClick={tieFortune}>Tie this omikuji</button>
+             <button onClick={downloadOmikuji}>Save as image</button>
           </div>
         )}
-
         {/* Tied / release state */}
         {state === "tied" && (
           <div className="tied-message">

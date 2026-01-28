@@ -116,6 +116,10 @@ button {
   justify-content: center;
 }
 
+.actions button:last-child {
+  opacity: 0.85;
+}
+
 .tied-message {
   text-align: center;
   color: #ddd;
