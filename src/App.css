@@ -113,6 +113,17 @@ button {
   margin-top: 1rem;
 }
 
+.tied-message {
+  text-align: center;
+  color: #ddd;
+  max-width: 320px;
+  margin-top: 1rem;
+}
+
+.tied-message p {
+  margin-bottom: 1.2rem;
+  line-height: 1.6;
+}
 
 @media (max-width: 420px) {
   .card {
