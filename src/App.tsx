@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { domains } from "./data/fortunes";
 import { toPng } from "html-to-image";
+import paperTexture from "./assets/paper.png";
 import {
   drawFortune,
   generateFortune,
@@ -44,38 +45,61 @@ function App() {
   }
 
   async function downloadOmikuji() {
-  if (!cardRef.current) return;
+    if (!cardRef.current) return;
 
-  try {
-    const dataUrl = await toPng(cardRef.current, {
-      pixelRatio: 2,
-      backgroundColor: "#f9f7f3",
-    });
+    try {
+      const dataUrl = await toPng(cardRef.current, {
+        pixelRatio: 2,
+        backgroundColor: "#f9f7f3",
+      });
 
-    const link = document.createElement("a");
-    link.download = "ao-no-kamidana-omikuji.png";
-    link.href = dataUrl;
-    link.click();
-  } catch (err) {
-    console.error("Failed to export omikuji", err);
+      const link = document.createElement("a");
+      link.download = "ao-no-kamidana-omikuji.png";
+      link.href = dataUrl;
+      link.click();
+    } catch (err) {
+      console.error("Failed to export omikuji", err);
+    }
   }
-}
 
   return (
     <main className="container">
       <div className="ritual">
-        <div className="card" ref={cardRef}>
+        {/* Shrine Header */}
+        <header className="site-header">
+          <div className="header-inner">
+            <div className="header-row">
+              <img
+                src="/blue-omikuji/stamp.svg"
+                alt="Ao no Kamidana Seal"
+                className="header-stamp"
+              />
+              <div className="header-text">
+                <h1 className="site-title">青の神棚</h1>
+                <p className="site-subtitle">Omikuji — Divine Fortune</p>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <div className="card" ref={cardRef}
+          style=
+          {{
+            backgroundImage: `url(${paperTexture})`,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+          }}
+          >
+          
           {/* Title always visible */}
           <h1>御神籤</h1>
-
           {/* Idle state */}
           {state === "idle" && (
             <button onClick={startDraw}>Draw your fortune ✨</button>
           )}
-
           {/* Drawing / anticipation */}
           {state === "drawing" && <p>Drawing your fortune…</p>}
-
           {/* Revealed fortune */}
           {state === "revealed" && result && levelMeta && (
             <>
@@ -113,7 +137,7 @@ function App() {
           <div className="actions">
             <button onClick={() => setState("idle")}>Draw again</button>
             <button onClick={tieFortune}>Tie this omikuji</button>
-             <button onClick={downloadOmikuji}>Save as image</button>
+            <button onClick={downloadOmikuji}>Save as image</button>
           </div>
         )}
         {/* Tied / release state */}

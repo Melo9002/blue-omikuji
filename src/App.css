@@ -14,6 +14,54 @@ main.container {
   place-items: center;
   padding: 1rem;
 }
+
+/* ===== Shrine Header ===== */
+
+.site-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.header-inner {
+  background: #f4efe6; /* warm shrine beige */
+  padding: 1.2rem 1.5rem;
+  border-radius: 6px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  max-width: 380px;
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-text {
+  text-align: left;
+}
+
+.site-title {
+  margin: 0.5rem 0 0;
+  font-size: 1.6rem;
+  letter-spacing: 0.15em;
+  color: #182c53;
+}
+
+.site-subtitle {
+  margin: 0.2rem 0 0;
+  font-size: 0.85rem;
+  color: #182c53;
+}
+
+.header-stamp {
+  width: 80px;
+  display: block;
+  margin: 0 auto;
+}
+
 /* ===== Buttons ===== */
 
 button {
