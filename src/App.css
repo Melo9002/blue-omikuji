@@ -85,8 +85,21 @@ button {
   line-height: 1.6;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
+/* ===== Card Stamp ===== */
+
+.card-stamp {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 110px;
+  opacity: 0.85;
+  transform: rotate(6deg);
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
 
 /* ===== Fortune Title ===== */
 

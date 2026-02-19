@@ -82,16 +82,16 @@ function App() {
           </div>
         </header>
 
-        <div className="card" ref={cardRef}
-          style=
-          {{
+        <div
+          className="card"
+          ref={cardRef}
+          style={{
             backgroundImage: `url(${paperTexture})`,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
           }}
-          >
-          
+        >
           {/* Title always visible */}
           <h1>御神籤</h1>
           {/* Idle state */}
@@ -128,6 +128,13 @@ function App() {
                   );
                 },
               )}
+
+              {/* Shrine stamp */}
+              <img
+                src="/blue-omikuji/stamp.svg"
+                alt="Ao no Kamidana seal"
+                className="card-stamp"
+              />
             </>
           )}
         </div>
