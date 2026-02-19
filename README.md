@@ -1,36 +1,90 @@
-# ⛩️ Blue’s Virtual Omikuji Shrine
+# ⛩️ Ao no Kamidana --- Virtual Omikuji Shrine
 
-A small React app inspired by real Japanese **omikuji** (the fortune-drawing ritual often found at shrines and temples).
+A small React app inspired by real Japanese **omikuji** (fortune slips
+found at shrines and temples).\
+This project blends tradition, personal symbolism, and modern web
+development.
 
-This is a **personal project**, built as a way to learn, reflect, and play with the idea of ritual in a digital space.
+Built as a reflective and creative exercise --- part ritual, part UI
+experiment.
 
-All I have nearby is a tiny *gashapon* kamidana, so… this became its Omikuji.  
-I hope this isn’t disrespectful to Shinto — it’s meant sincerely, not officially.
+------------------------------------------------------------------------
 
----
+## 🌿 Concept
 
-## ✨ What it does (v1)
+This project reimagines the omikuji experience in a digital space.
 
-- Draw a random fortune with a click
-- Display Japanese fortune levels (大吉, 中吉, etc.)
-- Simple, reactive UI built with React
-- No backend, no accounts, no tracking — just a small moment of chance
+Features include:
 
----
+-   🎴 Weighted fortune drawing (大吉 to 大凶)
+-   📜 Shrine-style fortune domains (願望, 縁, 道, 運, 調)
+-   🖋 Custom blue shrine stamp (青の神棚)
+-   📄 Paper-textured omikuji card
+-   🪢 "Tie the omikuji" ritual state with omikujikara illustration
+-   🖼 Export fortune as downloadable image
+-   🚀 Fully static deployment via GitHub Pages
+
+This is **not an official religious tool**, but a respectful creative
+interpretation.
+
+------------------------------------------------------------------------
+
+## ✨ Current Features (v2)
+
+-   Randomized weighted fortune system
+-   English + Japanese presentation
+-   Ritual flow states:
+    -   Idle
+    -   Drawing
+    -   Revealed
+    -   Tied
+-   Image export (printable omikuji)
+-   Responsive layout (mobile-friendly)
+
+------------------------------------------------------------------------
 
 ## 🛠️ Tech Stack
 
-- **React**
-- **TypeScript**
-- **Vite**
-- Plain CSS (for now)
+-   **React**
+-   **TypeScript**
+-   **Vite**
+-   **html-to-image** (for PNG export)
+-   Plain CSS (custom styling, no frameworks)
 
-This project intentionally starts simple. More features and polish may be added gradually.
+------------------------------------------------------------------------
 
----
+## 🚀 Running Locally
 
-## 🚀 Running it locally
-
-```bash
+``` bash
 npm install
 npm run dev
+```
+
+Then open:
+
+    http://localhost:5173
+
+------------------------------------------------------------------------
+
+## 🌐 Live Version
+
+Deployed automatically via **GitHub Actions** to GitHub Pages.
+
+------------------------------------------------------------------------
+
+## 🧭 Future Ideas
+
+-   Subtle shrine-style animations
+-   Additional fortune lines
+-   Seasonal variants
+-   Alternate stamp themes
+-   Subtle ambient background visuals
+
+------------------------------------------------------------------------
+
+## 📜 Philosophy
+
+Ao no Kamidana is a personal shrine space ---\
+a quiet intersection of code, ritual, memory, and aesthetics.
+
+Built sincerely.
