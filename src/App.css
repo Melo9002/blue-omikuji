@@ -25,7 +25,7 @@ main.container {
 }
 
 .header-inner {
-  background: #f4efe6; /* warm shrine beige */
+  background: #f4efe6;
   padding: 1.2rem 1.5rem;
   border-radius: 6px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
@@ -205,4 +205,46 @@ button {
   .fortune-line {
     font-size: 0.9rem;
   }
+}
+
+/* ===== Shrine photo, so cool! ===== */
+
+.shrine-intro {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  animation: fadeIn 0.8s ease;
+}
+
+.shrine-intro img {
+  max-width: 400px;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+}
+
+/* simple fade */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ===== Tied Omikuji ===== */
+
+.tied-content {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.omikujikara {
+  width: 220px;
+  opacity: 0.65;
+  margin: 1.5rem 0;
+}
+
+
+.tied-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444;
 }

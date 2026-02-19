@@ -2,6 +2,8 @@ import { useState, useRef } from "react";
 import { domains } from "./data/fortunes";
 import { toPng } from "html-to-image";
 import paperTexture from "./assets/paper.png";
+import shrinePhoto from "./assets/kamidana.jpg";
+import omikujikara from "./assets/omikujikara.png";
 import {
   drawFortune,
   generateFortune,
@@ -82,6 +84,13 @@ function App() {
           </div>
         </header>
 
+        {/* Shrine Photo */}
+        {state === "idle" && (
+          <div className="shrine-intro">
+            <img src={shrinePhoto} alt="Ao no Kamidana Shrine" />
+          </div>
+        )}
+
         <div
           className="card"
           ref={cardRef}
@@ -137,6 +146,24 @@ function App() {
               />
             </>
           )}
+
+          {state === "tied" && (
+            <div className="tied-content">
+              <img
+                src={omikujikara}
+                alt="Tied omikuji"
+                className="omikujikara"
+              />
+
+              <p className="tied-text">
+                This fortune has been entrusted.
+                <br />
+                May clarity follow.
+              </p>
+
+              <button onClick={() => setState("idle")}>Draw again</button>
+            </div>
+          )}
         </div>
 
         {/* Actions live OUTSIDE the card */}
@@ -145,18 +172,6 @@ function App() {
             <button onClick={() => setState("idle")}>Draw again</button>
             <button onClick={tieFortune}>Tie this omikuji</button>
             <button onClick={downloadOmikuji}>Save as image</button>
-          </div>
-        )}
-        {/* Tied / release state */}
-        {state === "tied" && (
-          <div className="tied-message">
-            <p>
-              This fortune has been entrusted.
-              <br />
-              May clarity follow.
-            </p>
-
-            <button onClick={() => setState("idle")}>Draw again</button>
           </div>
         )}
       </div>
