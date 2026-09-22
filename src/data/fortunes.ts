@@ -41,6 +41,15 @@ export const fortuneLevels = {
   },
 } as const;
 
+export const fortuneOpenings: Record<FortuneLevel, string> = {
+  daikichi: "The way before you is bright; move with gratitude.",
+  chukichi: "Good things are growing; tend them patiently.",
+  shokichi: "A small blessing arrives through steady care.",
+  suekichi: "What is slow to bloom may still flourish in time.",
+  kyo: "The path is clouded; proceed with care and patience.",
+  daikyo: "Pause and seek steadier ground before you move ahead.",
+};
+
 
 // --- Weighted Distribution (realistic) ---
 

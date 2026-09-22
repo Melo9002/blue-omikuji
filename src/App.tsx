@@ -8,6 +8,7 @@ import {
   drawFortune,
   generateFortune,
   fortuneLevels,
+  fortuneOpenings,
   type GeneratedFortune,
 } from "./data/fortunes";
 
@@ -117,6 +118,8 @@ function App() {
               <p className="fortune-subtitle">
                 {levelMeta.romaji} — {levelMeta.en}
               </p>
+
+              <p className="fortune-opening">{fortuneOpenings[result.level]}</p>
 
               {Object.entries(result.domains).map(
                 ([key, text]: [string, string]) => {

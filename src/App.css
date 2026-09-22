@@ -7,12 +7,14 @@ body {
   font-family: system-ui, -apple-system, sans-serif;
 }
 
+*, *::before, *::after { box-sizing: border-box; }
+
 /* Center everything */
 main.container {
-  min-height: 100vh;
+  min-height: 100svh;
   display: grid;
   place-items: center;
-  padding: 1rem;
+  padding: 1.5rem 1rem 2rem;
 }
 
 /* ===== Shrine Header ===== */
@@ -25,6 +27,7 @@ main.container {
 }
 
 .header-inner {
+  width: 100%;
   background: #f4efe6;
   padding: 1.2rem 1.5rem;
   border-radius: 6px;
@@ -65,11 +68,29 @@ main.container {
 /* ===== Buttons ===== */
 
 button {
-  padding: 0.6rem 1.4rem;
+  min-height: 44px;
+  padding: 0.65rem 1.2rem;
   font-size: 1rem;
+  font-family: inherit;
   cursor: pointer;
   border-radius: 6px;
-  border: none;
+  border: 1px solid #34517c;
+  background: #1e345d;
+  color: #fff;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background: #34517c;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+button:focus-visible {
+  outline: 3px solid #91b6ea;
+  outline-offset: 3px;
 }
 
 /* ===== Omikuji Card ===== */
@@ -79,7 +100,7 @@ button {
   max-width: 360px;
   background: #f9f7f3;
   color: #222;
-  padding: 1.5rem 1.25rem;
+  padding: 1.7rem 1.5rem;
   border-radius: 4px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
   line-height: 1.6;
@@ -125,12 +146,23 @@ button {
   margin-bottom: 0.8rem;
 }
 
+.fortune-opening {
+  max-width: 28ch;
+  margin: 0.2rem auto 1.1rem;
+  color: #334567;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  line-height: 1.45;
+  text-align: center;
+}
+
 
 /* ===== Domain Sections ===== */
 
 .domain {
-  margin-top: 0.6rem;
-  padding-top: 0.4rem;
+  margin-top: 0.85rem;
+  padding-top: 0.65rem;
   border-top: 1px solid #ddd;
 }
 
@@ -158,8 +190,8 @@ button {
 /* ===== Fortune Text ===== */
 
 .fortune-line {
-  margin: 0.4rem 0 0;
-  font-size: 0.95rem;
+  margin: 0.45rem 0 0;
+  font-size: 1rem;
 }
 
 /* ===== Footer buttons ===== */
@@ -168,17 +200,27 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  max-width: 440px;
 }
 
 .actions {
+  width: 100%;
   margin-top: 1rem;
   display: flex;
+  flex-wrap: wrap;
   gap: 0.75rem;
   justify-content: center;
 }
 
 .actions button:last-child {
-  opacity: 0.85;
+  background: transparent;
+  color: #eee;
+  border-color: #91a7c8;
+}
+
+.actions button:last-child:hover {
+  background: #2e405d;
 }
 
 .tied-message {
@@ -194,8 +236,15 @@ button {
 }
 
 @media (max-width: 420px) {
+  .site-header { margin-bottom: 1.25rem; }
+  .header-inner { padding: 0.9rem 1rem; }
+  .header-row { gap: 0.65rem; }
+  .header-stamp { width: 56px; flex: none; }
+  .site-title { font-size: 1.35rem; }
+  .site-subtitle { font-size: 0.75rem; }
+
   .card {
-    padding: 1.25rem 1rem;
+    padding: 1.4rem 1.1rem;
   }
 
   .card h2 {
@@ -203,13 +252,23 @@ button {
   }
 
   .fortune-line {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
+
+  .card-stamp {
+    width: 78px;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .actions { flex-direction: column; }
+  .actions button { width: 100%; min-height: 44px; }
 }
 
 /* ===== Shrine photo, so cool! ===== */
 
 .shrine-intro {
+  width: 100%;
   margin-bottom: 1.5rem;
   text-align: center;
   animation: fadeIn 0.8s ease;
