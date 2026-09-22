@@ -212,6 +212,11 @@ function App() {
             <button onClick={downloadOmikuji}>Save as image</button>
           </div>
         )}
+
+        <p className="site-note">
+          A personal creative project inspired by omikuji. Not affiliated with
+          any shrine or religious organization.
+        </p>
       </div>
     </main>
   );

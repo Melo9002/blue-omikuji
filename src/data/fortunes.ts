@@ -51,7 +51,7 @@ export const fortuneOpenings: Record<FortuneLevel, string> = {
 };
 
 
-// --- Weighted Distribution (realistic) ---
+// --- Project-specific draw weights; omikuji distributions vary by shrine ---
 
 const weights: Record<FortuneLevel, number> = {
   daikichi: 8,

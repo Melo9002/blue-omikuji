@@ -236,6 +236,15 @@ button:focus-visible {
   background: #2e405d;
 }
 
+.site-note {
+  max-width: 360px;
+  margin: 1.5rem 0 0;
+  color: #c4c4c4;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
 .tied-message {
   text-align: center;
   color: #ddd;
@@ -252,7 +261,7 @@ button:focus-visible {
   .site-header { margin-bottom: 1.25rem; }
   .header-inner { padding: 0.9rem 1rem; }
   .header-row { gap: 0.65rem; }
-  .header-stamp { width: 56px; flex: none; }
+  .header-stamp { width: clamp(68px, 21vw, 84px); flex: none; }
   .site-title { font-size: 1.35rem; }
   .site-subtitle { font-size: 0.75rem; }
 
