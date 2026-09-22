@@ -50,8 +50,12 @@ function App() {
   async function downloadOmikuji() {
     if (!cardRef.current) return;
 
+    const card = cardRef.current;
+    card.classList.add("card--exporting");
+
     try {
-      const dataUrl = await toPng(cardRef.current, {
+      await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+      const dataUrl = await toPng(card, {
         pixelRatio: 2,
         backgroundColor: "#f9f7f3",
       });
@@ -62,6 +66,8 @@ function App() {
       link.click();
     } catch (err) {
       console.error("Failed to export omikuji", err);
+    } finally {
+      card.classList.remove("card--exporting");
     }
   }
 
@@ -93,7 +99,7 @@ function App() {
         )}
 
         <div
-          className="card"
+          className={`card card--${state}`}
           ref={cardRef}
           style={{
             backgroundImage: `url(${paperTexture})`,
@@ -152,6 +158,7 @@ function App() {
 
           {state === "tied" && (
             <div className="tied-content">
+              <span className="tying-slip" aria-hidden="true" />
               <img
                 src={omikujikara}
                 alt="Tied omikuji"
