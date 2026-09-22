@@ -17,8 +17,10 @@ import {
  * - idle: before drawing
  * - drawing: anticipation delay
  * - revealed: fortune shown
+ * - tying: brief pause before entrusting the fortune
+ * - tied: fortune entrusted
  */
-type RitualState = "idle" | "drawing" | "revealed" | "tied";
+type RitualState = "idle" | "drawing" | "revealed" | "tying" | "tied";
 
 function App() {
   const [state, setState] = useState<RitualState>("idle");
@@ -40,11 +42,17 @@ function App() {
       const level = drawFortune();
       setResult(generateFortune(level));
       setState("revealed");
-    }, 1200);
+    }, 1500);
   }
 
   function tieFortune() {
-    setState("tied");
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setState("tied");
+      return;
+    }
+
+    setState("tying");
+    setTimeout(() => setState("tied"), 1100);
   }
 
   async function downloadOmikuji() {
@@ -115,7 +123,16 @@ function App() {
             <button onClick={startDraw}>Draw your fortune ✨</button>
           )}
           {/* Drawing / anticipation */}
-          {state === "drawing" && <p>Drawing your fortune…</p>}
+          {state === "drawing" && (
+            <div className="ritual-progress" role="status">
+              <span className="progress-indicator" aria-hidden="true">
+                <span />
+                <span />
+                <span />
+              </span>
+              <p>Drawing your fortune…</p>
+            </div>
+          )}
           {/* Revealed fortune */}
           {state === "revealed" && result && levelMeta && (
             <>
@@ -154,6 +171,17 @@ function App() {
                 className="card-stamp"
               />
             </>
+          )}
+
+          {state === "tying" && (
+            <div className="ritual-progress" role="status">
+              <span className="progress-indicator" aria-hidden="true">
+                <span />
+                <span />
+                <span />
+              </span>
+              <p>Tying your omikuji…</p>
+            </div>
           )}
 
           {state === "tied" && (

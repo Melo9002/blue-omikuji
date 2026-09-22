@@ -110,7 +110,7 @@ button:focus-visible {
 }
 
 .card--revealed {
-  animation: slip-reveal 650ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation: slip-reveal 900ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
 /* ===== Card Stamp ===== */
@@ -127,7 +127,7 @@ button:focus-visible {
 }
 
 .card--revealed .card-stamp {
-  animation: stamp-press 420ms 480ms ease-out both;
+  animation: stamp-press 550ms 650ms ease-out both;
 }
 
 .card--exporting,
@@ -303,6 +303,35 @@ button:focus-visible {
 
 /* ===== Tied Omikuji ===== */
 
+.ritual-progress {
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: #334567;
+  text-align: center;
+}
+
+.ritual-progress p { margin: 0; }
+
+.progress-indicator {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.progress-indicator span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #34517c;
+  animation: progress-pulse 750ms ease-in-out infinite alternate;
+}
+
+.progress-indicator span:nth-child(2) { animation-delay: 150ms; }
+.progress-indicator span:nth-child(3) { animation-delay: 300ms; }
+
 .tied-content {
   text-align: center;
   margin-top: 1.5rem;
@@ -314,7 +343,7 @@ button:focus-visible {
   opacity: 0.65;
   margin: 1.5rem 0;
   transform-origin: center 2rem;
-  animation: rail-settle 850ms ease-out both;
+  animation: rail-settle 1200ms ease-out both;
 }
 
 .tying-slip {
@@ -329,7 +358,7 @@ button:focus-visible {
   box-shadow: 1px 2px 4px rgba(28, 31, 40, 0.18);
   transform-origin: top center;
   pointer-events: none;
-  animation: tie-slip 850ms ease-in-out both;
+  animation: tie-slip 1200ms ease-in-out both;
 }
 
 
@@ -337,7 +366,12 @@ button:focus-visible {
   font-size: 1rem;
   line-height: 1.6;
   color: #444;
-  animation: tied-message-reveal 550ms 650ms ease-out both;
+  animation: tied-message-reveal 600ms 850ms ease-out both;
+}
+
+@keyframes progress-pulse {
+  from { opacity: 0.35; transform: scale(0.75); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 @keyframes slip-reveal {
@@ -373,6 +407,7 @@ button:focus-visible {
   .shrine-intro,
   .card--revealed,
   .card--revealed .card-stamp,
+  .progress-indicator span,
   .omikujikara,
   .tied-text {
     animation: none;
